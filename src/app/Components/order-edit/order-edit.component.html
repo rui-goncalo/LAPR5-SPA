@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<!-- ======= Edit Orders Section ======= -->
+<section id="orders" class="order section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Orders</h2>
+      <h3>Here you can edit <span>Orders</span>.</h3>
+      <p><i>“Teamwork is the secret that makes common people achieve uncommon results”</i></p>
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-sm-center"  data-aos="fade-up" data-aos-delay="100">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://cdn.dribbble.com/users/1925451/screenshots/17289341/media/cb780838f29a2d6621dcf5c5f2f6a017.jpg" class="img-fluid" alt="OrdersEdit">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+          <div *ngIf="orderEdit" class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </svg>
+            {{this.successMessage}}
+          </div>
+          <div *ngIf="!orderEdit && orderEdit != null" class="alert alert-warning d-flex align-items-center">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            {{this.errorMessage}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- EDIT PAGE-->
+    <div class="row mt-4">
+      <div class="row mt-4">
+        <div class="col">
+          <div class="row">
+            <table>
+              <tr>
+                <th>Description</th>
+              </tr>
+              <tr *ngFor="let order of orders">
+                <td>{{ order.orderDescription }}</td>
+                <td><button class="btn btn-primary" id="buttonEdit" (click)="onEditClicked(order.orderId)">Edit</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <form #orderForm="ngForm" (ngSubmit)="editOrder(orderForm)">
+          <div class="form-group">
+            <label>Description</label><br>
+            <input type="text" name="orderDescription" id="orderDescription" ngModel>
+          </div>
+          <br>
+          <div class="submit-button-order">
+            <button type="submit" [disabled]="!editMode" value="{{editMode ? 'Update order' : 'Click on edit to update an order'}}" class="btn btn-primary">Submit my new Order!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END OF EDIT PAGE-->
+  </div>
+</section><!-- End Edit Orders Section -->
+
+<app-footer></app-footer>

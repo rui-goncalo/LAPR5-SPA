@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<!-- ======= Header Route Section ======= -->
+<section id="trip" class="trip section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Trip</h2>
+      <h3>Here we're listing all <span>Trips</span>.</h3>
+      <p><i>“As a logistic manager I want to see all trips.”</i></p>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+          <table>
+            <tr>
+              <th>Trips</th>
+            </tr>
+            <tr *ngFor="let trip of trips | paginate: { itemsPerPage: itemsPerPage, currentPage: p };">
+              <td>{{ trip.tripRoutes }}</td>
+            </tr>
+          </table>
+        </div>
+        <br>
+        <br>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <label>Items per page:
+          <select [(ngModel)]="itemsPerPage">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Header Route Section -->
+
+<app-footer></app-footer>

@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<!-- ======= Header Delivery Section ======= -->
+<section id="deliveries" class="truck section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Deliveries</h2>
+      <h3>Here we're listing all <span>Deliveries</span>.</h3>
+      <p><i>“I want to see all deliveries createad.”</i></p>
+    </div>
+    <!-- search -->
+    <nav class="navbar">
+      <input class="form-control" type="search" autocomplete="off" name="warehouseId"
+        placeholder="Enter warehouse designation to search" [(ngModel)]="warehouseAux" (ngModelChange)="Search()" id="searchfield">
+    </nav>
+    <!-- fim search -->
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+          <table>
+            <tr>
+              <th (click)="sort('deliveryDate')">Delivery Date&nbsp;<i class="fa fa-fw fa-sort" aria-hidden="true"></i>
+              </th>
+              <th>Mass</th>
+              <th (click)="sort('warehouseDesignation')">Warehouse &nbsp;<i class="fa fa-fw fa-sort"
+                  aria-hidden="true"></i></th>
+              <th>Load Time</th>
+              <th>Unload Time</th>
+            </tr>
+            <tr *ngFor="let delivery of deliveries | orderBy: key: reverse">
+              <td>{{ delivery.deliveryDate }}</td>
+              <td>{{ delivery.mass }}</td>
+              <td>{{ getDesignationByWarehouseId(delivery.warehouseId) }}</td>
+              <td>{{ delivery.loadTime }}</td>
+              <td>{{ delivery.unloadTime }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Header Delivery Section -->
+
+
+<app-footer></app-footer>

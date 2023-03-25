@@ -1,0 +1,79 @@
+<section id="login" class="d-flex align-items-center">
+  <div class="container form-card-016" style="max-width: 550px;padding: 40px 80px; background-color: rgba(255, 255, 255, 0.3);border-radius: 5px;">
+    <h1 class="text-center mb-5">Create an Account<span>.</span></h1>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+          <div *ngIf="userCreated" class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </svg>
+            {{this.successMessage}}
+          </div>
+          <div *ngIf="!userCreated && userCreated != null" class="alert alert-warning d-flex align-items-center">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            {{this.errorMessage}}
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="mb-3">
+          <div class="row">
+            <div class="col">
+              <label class="form-label"><b>First Name</b></label>
+              <input [readOnly]="blockInput" [(ngModel)]="firstName" type="text" class="form-control" placeholder="First name">
+            </div>
+            <div class="col">
+              <label class="form-label"><b>Last Name</b></label>
+              <input [readOnly]="blockInput" [(ngModel)]="lastName" type="text" class="form-control" placeholder="Last name">
+            </div>
+          </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label"><b>Phone Number</b></label>
+        <input [readOnly]="blockInput" [(ngModel)]="phoneNumber" class="form-control" id="phoneNumber" placeholder="Insert your phone number" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label"><b>Email</b></label>
+        <input [readOnly]="blockInput" [(ngModel)]="email" class="form-control" id="email" placeholder="Insert your email" required>
+
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label"><b>Password</b></label>
+        <input  [readOnly]="blockInput" [(ngModel)]="password"  type="password" class="form-control" id="password" placeholder="Insert your password">
+      </div>
+      <div class="mb-3">
+        <div class="form-group">
+          <label>Role</label>
+          <select [(ngModel)]="role" id="input-role" class="form-control">
+            <option value="1">Warehouse Manager</option>
+            <option value="2">Logistics Manager</option>
+            <option value="3">Planning Manager</option>
+            <option value="4">Admin</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-md-5">
+        <div class="form-check">
+          <input class="form-check-input" required type="checkbox" value="" id="checkBox" [(ngModel)]="blockSignup" id="input-rgpd">
+          <label class="form-check-label" for="checkBox">
+            <a [routerLink]="['/terms']" target="_blank">Agree to terms and conditions</a>
+          </label>
+        </div>
+      </div>
+      <div class="mb-3" style="padding: 20px 0px;">
+        <button class="w-100 btn btn-lg btn-success" (click)="signup()" [disabled]="!blockSignup">Submit</button>
+      </div>
+    <div class="mb-3">
+      <p class="mt-5 mb-3 text-center" style="color:#fff">Electric Go &copy; 2022-2023 Grupo 016</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+

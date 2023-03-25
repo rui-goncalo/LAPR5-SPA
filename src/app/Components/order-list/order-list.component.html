@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<!-- ======= Header Order Section ======= -->
+<section id="orders" class="order section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Orders</h2>
+      <h3>Here we're listing all <span>Orders</span>.</h3>
+      <p><i>“As a fleet manager I want to see all orders createad.”</i></p>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+            <table>
+              <tr>
+                <th>Description</th>
+              </tr>
+              <tr *ngFor="let order of orders" >
+                <td>{{ order.orderDescription }}</td>
+              </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Header Order Section -->
+
+<app-footer></app-footer>

@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<!-- ======= Header Route Section ======= -->
+<section id="routes" class="route section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Routes</h2>
+      <h3>Here we're listing all <span>Routes</span>.</h3>
+      <p><i>“As a logistic manager I want to see all routes created.”</i></p>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+          <table>
+            <tr>
+              <th>Origin</th>
+              <th>Destination</th>
+              <th>Distance</th>
+              <th>Time Distance</th>
+              <th>Energy Spent</th>
+              <th>Extra Time Battery</th>
+            </tr>
+            <tr *ngFor="let route of routes | paginate: { itemsPerPage: itemsPerPage, currentPage: p };">
+              <td>{{ getDesignationByWarehouseId(route.origin) }}</td>
+              <td>{{ getDesignationByWarehouseId(route.destination) }}</td>
+              <td>{{ route.distance }}</td>
+              <td>{{ route.timeDistance }}</td>
+              <td>{{ route.energySpent }}</td>
+              <td>{{ route.extraTimeBattery }}</td>
+            </tr>
+          </table>
+        </div>
+        <br>
+        <br>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <label>Items per page:
+          <select [(ngModel)]="itemsPerPage" id="itemsoptions">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Header Route Section -->
+
+<app-footer></app-footer>

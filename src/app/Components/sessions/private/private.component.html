@@ -1,0 +1,42 @@
+
+<!-- ======= Header Truck Section ======= -->
+<section id="private" class="private section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Sessions</h2>
+    </div>
+    <div class="section-title">
+      <h3>Welcome {{name}} - {{roles[userData.role-1]}}!</h3>
+      <p><i>“Teamwork is the secret that makes common people achieve uncommon results”</i></p>
+    </div>
+    <div class="section-title-logout">
+      <h2 (click)="logout()"> <a href="/login" >Logout</a></h2>
+    </div>
+
+  </div>
+</section><!-- End Header Private User Section -->
+
+
+<!-- ======= Featured Services Section ======= -->
+<section id="featured-services" class="featured-services" style ="background-color: #f6f9fe!important">
+  <div class="container" data-aos="fade-up">
+
+    <a href="#" (click)="logout()">Logout</a>
+
+    <div class="row">
+      <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon"><i class="bi bi-truck"></i></div>
+          <ng-container *ngFor="let link of links">
+            <a *ngIf="link.roles.includes(userData.role)" href="#" [routerLink]="[link.route]" class="button-pad">
+                <span class="description">{{link.description}}</span>
+            </a>
+          </ng-container>
+          <p class="description">Depending on your role, you can create or list components!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Featured Services Section -->
+
+

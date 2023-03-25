@@ -1,0 +1,27 @@
+
+/*--------------------------------------------------------------
+# Delivery
+--------------------------------------------------------------*/
+.delivery {
+    padding: 60px 0;
+    margin-top: 50px;
+  }
+  
+  .delivery .card {
+    width:400px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 2px 15px rgba(16, 110, 234, 0.15);
+  }
+  
+  .delivery .card .card-img {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .delivery .submit-button-truck {
+    padding-top:30px;
+  }
+  

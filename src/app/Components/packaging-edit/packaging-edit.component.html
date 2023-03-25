@@ -1,0 +1,99 @@
+<app-header></app-header>
+
+<!-- ======= Edit Packagings Section ======= -->
+<section id="packagings" class="packaging section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Packagings</h2>
+      <h3>Here you can edit <span>Packagings</span>.</h3>
+      <p><i>“Teamwork is the secret that makes common people achieve uncommon results”</i></p>
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-sm-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="card">
+          <div class="card-img">
+            <img
+              src="https://www.planetpaper.com/wp-content/uploads/2017/07/corrugated_box_manufacturing_usa-canada_worldwide_shipping-1236x1038.jpg?x47009"
+              class="img-fluid" alt="PackagingsEdit">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+          <div *ngIf="packagingEdit" class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </svg>
+            {{this.successMessage}}
+          </div>
+          <div *ngIf="!packagingEdit && packagingEdit != null" class="alert alert-warning d-flex align-items-center">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            {{this.errorMessage}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIT PAGE -->
+    <div class="row mt-4">
+      <div class="row mt-4">
+        <div class="col">
+          <div class="row">
+            <table>
+              <tr>
+                <th>Packaging X</th>
+                <th>Packaging Y</th>
+                <th>Packaging Z</th>
+                <th>Truck</th>
+              </tr>
+              <tr *ngFor="let packaging of packagings">
+                <td>{{ packaging.packagingX }}</td>
+                <td>{{ packaging.packagingY }}</td>
+                <td>{{ packaging.packagingZ }}</td>
+                <td>{{ getRegistrationByTruckId(packaging.packagingTruck) }}</td>
+                <td><button id="packagingEditButton" class="btn btn-primary" id="buttonEdit" (click)="onEditClicked(packaging.packagingId)">Edit</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <h3>Edit Packaging</h3>
+        <form #packagingForm="ngForm" (ngSubmit)="editPackaging(packagingForm)">
+          <div class="form-group">
+            <label>Packaging X</label><br>
+            <input type="text" name="packagingX" ngModel>
+          </div>
+          <br>
+          <div class="form-group">
+            <label>Packaging Y</label><br>
+            <input type="text" name="packagingY" id="packagingY" ngModel>
+          </div>
+          <br>
+          <div class="form-group">
+            <label>Packaging Z</label><br>
+            <input type="text" name="packagingZ" ngModel>
+          </div>
+          <br>
+          <div class="form-group">
+            <label>Truck</label><br>
+            <input type="text" name="packagingTruck" ngModel>
+          </div>
+
+          <div class="submit-button-packaging">
+            <button type="submit" [disabled]="!editMode" value="{{editMode ? 'Update packaging' : 'Click on edit to update a packaging'}}" class="btn btn-primary">Submit my new packaging!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END OF EDIT PAGE -->
+  </div>
+</section><!-- End Edit Packagings Section -->
+<app-footer></app-footer>

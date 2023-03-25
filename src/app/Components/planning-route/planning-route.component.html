@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<!-- ======= Header planningRoute Section ======= -->
+<html>
+  <section id="planningRoute" class="planningRoute section-bg">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Planning Route</h2>
+        <h3>Here you can list planning routes with different <span>Algorithms</span>.</h3>
+      </div>
+      <div class="row">
+        <div class="d-flex justify-content-sm-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="card">
+            <div class="card-img">
+              <img
+                src="https://cdn.dribbble.com/users/77854/screenshots/2588840/media/d125344747b0b974a792f0d3ddf7c9cb.png?compress=1&resize=800x600&vertical=top"
+                class="img-fluid" alt="PlanningRoutes" width="500px" height="500px">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div>
+        <div>
+          <div class="form-group">
+            <label>Date</label><br>
+            <input type="text" required maxlength="8" #Date="ngModel" id="Date" name="Date" placeholder="Insert Date. (20221205)"
+                   required
+                   [(ngModel)]="date">
+          </div>
+          <br>
+          <div class="form-group">
+            <label>Truck</label><br>
+            <input type="text" required maxlength="8" #TruckId="ngModel" id="Truck" name="TruckId" placeholder="Insert Truck. (eTruck01)"
+                   title="TruckId must be of format eTruck00" required [(ngModel)]="truckId">
+          </div>
+        </div>
+        <br>
+        <div>
+          <div class="form-group">
+            <label>Algorithm</label><br>
+            <select [(ngModel)]="algorithm" (ngModelChange)="ChooseAlgorithm()" type="text" name="options" id="options">
+              <option selected disabled>Select an option..</option>
+              <!--<option value="bestRoute">Get Best Route</option>-->
+              <option value="HDist">Get Distance Heuristic</option>
+              <option value="HMassa">Get Mass heuristic</option>
+              <option value="HMassaTempo">Get Mass and Time heuristic</option>
+              <option value="AlgGen">Get Genetic Algorithm</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div>
+          <div>
+            <div class="form-group">
+              <label>Results:</label><br>
+              <table>
+                <tr><span>{{ planningRoute }}</span></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</html>
+
+<app-footer></app-footer>

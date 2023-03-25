@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<!-- ======= Header List Packagings Section ======= -->
+<section id="packagings" class="packaging section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Packagings</h2>
+      <h3>Here we're listing all <span>Packagings</span>.</h3>
+      <p><i>“As a logistic manager I want to see all packagings created.”</i></p>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="row">
+          <table>
+            <tr>
+              <th>Packaging X</th>
+              <th>Packaging Y</th>
+              <th>Packaging Z</th>
+              <th>Packaging Truck</th>
+            </tr>
+            <tr *ngFor="let packaging of packagings | paginate: { itemsPerPage: itemsPerPage, currentPage: pag };">
+              <td>{{ packaging.packagingX }}</td>
+              <td>{{ packaging.packagingY }}</td>
+              <td>{{ packaging.packagingZ }}</td>
+              <td>{{ getRegistrationByTruckId(packaging.packagingTruck) }}</td>
+              </tr>
+          </table>
+        </div>
+        <br>
+        <br>
+        <pagination-controls (pageChange)="pag = $event"></pagination-controls>
+        <label>Items per page:
+          <select [(ngModel)]="itemsPerPage" id="itemsoptions">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Header List Packagings Section -->
+
+<app-footer></app-footer>
